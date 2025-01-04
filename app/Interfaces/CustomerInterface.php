@@ -3,16 +3,17 @@
 namespace App\Interfaces;
 
 use App\Models\Customer;
+use Illuminate\Http\JsonResponse;
 
 interface CustomerInterface
 {
-    public function getCustomer(Customer $id);
+    public function getCustomer(Customer $id): JsonResponse;
 
-    public function createCustomer(array $data);
+    public function createCustomer(array $data): JsonResponse;
 
-    public function updateCustomer(Customer $customer, array $data);
+    public function updateCustomer(Customer $customer, array $data): JsonResponse;
 
-    public function deleteCustomer(Customer $customer);
+    public function deleteCustomer(Customer $customer): JsonResponse;
 
-    public function getCustomers();
+    public function getCustomers(): JsonResponse;
 }

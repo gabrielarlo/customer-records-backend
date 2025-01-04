@@ -22,7 +22,10 @@ class UpdateCustomerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string|min:3',
+            'email' => 'required|email|unique:customers,email,'.$this->customer->id,
+            'phone' => 'required|string|min:10',
+            'address' => 'required|string|min:10',
         ];
     }
 }

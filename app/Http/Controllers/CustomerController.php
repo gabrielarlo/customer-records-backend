@@ -2,65 +2,42 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreCustomerRequest;
+use App\Http\Requests\CreateCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
+use App\Interfaces\CustomerInterface;
 use App\Models\Customer;
+use Illuminate\Http\JsonResponse;
 
 class CustomerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function __construct(protected CustomerInterface $customerInterface) {}
+
+    public function list(): JsonResponse
     {
-        //
+        return $this->customerInterface->getCustomers();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function create(CreateCustomerRequest $request): JsonResponse
     {
-        //
+        $validated = $request->validated();
+
+        return $this->customerInterface->createCustomer($validated);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreCustomerRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
     public function show(Customer $customer)
     {
-        //
+        return $this->customerInterface->getCustomer($customer);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Customer $customer)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateCustomerRequest $request, Customer $customer)
     {
-        //
+        $validated = $request->validated();
+
+        return $this->customerInterface->updateCustomer($customer, $validated);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Customer $customer)
     {
-        //
+        return $this->customerInterface->deleteCustomer($customer);
     }
 }
