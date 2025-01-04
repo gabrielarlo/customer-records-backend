@@ -32,7 +32,7 @@ return [
              */
             'middleware' => [
                 'web',
-                // EnsureUserIsAuthorized::class,
+                EnsureUserIsAuthorized::class,
             ],
 
             /*
@@ -43,12 +43,12 @@ return [
             /*
              * If enabled the file will be modified to set the server url and oauth urls.
              */
-            'modify_file' => false,
+            'modify_file' => true,
 
             /*
              * The server URL configuration for the swagger file.
              */
-            'server_url' => env('APP_URL'),
+            'server_url' => env('APP_URL_API'),
 
             /*
              * The oauth configuration for the swagger file.

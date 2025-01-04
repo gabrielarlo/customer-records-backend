@@ -5,11 +5,6 @@
         "version": "1.0.0",
         "description": "API for managing customer records"
     },
-    "servers": [
-        {
-            "url": "http://localhost:8000/api"
-        }
-    ],
     "paths": {
         "/customers": {
             "get": {
