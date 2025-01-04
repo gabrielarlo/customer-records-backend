@@ -24,8 +24,20 @@ class UpdateCustomerRequest extends FormRequest
         return [
             'name' => 'required|string|min:3',
             'email' => 'required|email|unique:customers,email,'.$this->customer->id,
-            'phone' => 'required|string|min:10',
+            'phone' => ['required', 'string', 'regex:/^09\d{9}$/'],
             'address' => 'required|string|min:10',
+        ];
+    }
+
+    /**
+     * Get the custom messages for validator errors.
+     *
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            'phone.regex' => 'The phone number must be in the format 09#########.',
         ];
     }
 }

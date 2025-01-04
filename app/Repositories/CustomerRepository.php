@@ -83,7 +83,8 @@ class CustomerRepository implements CustomerInterface
     {
         $total = Customer::count();
         $newly = Customer::where('created_at', 'like', now()->format('Y-m-d ').'%')->count();
+        $deleted = Customer::onlyTrashed()->count();
 
-        return response()->json(compact('total', 'newly'));
+        return response()->json(compact('total', 'newly', 'deleted'));
     }
 }
