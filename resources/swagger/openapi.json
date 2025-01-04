@@ -189,13 +189,19 @@
                     "id": {
                         "type": "string"
                     },
-                    "name": {
+                    "first_name": {
+                        "type": "string"
+                    },
+                    "last_name": {
+                        "type": "string"
+                    },
+                    "full_name": {
                         "type": "string"
                     },
                     "email": {
                         "type": "string"
                     },
-                    "phone": {
+                    "contact_number": {
                         "type": "string"
                     },
                     "address": {
@@ -212,13 +218,16 @@
             "CustomerRequest": {
                 "type": "object",
                 "properties": {
-                    "name": {
+                    "first_name": {
+                        "type": "string"
+                    },
+                    "last_name": {
                         "type": "string"
                     },
                     "email": {
                         "type": "string"
                     },
-                    "phone": {
+                    "contact_number": {
                         "type": "string"
                     },
                     "address": {
@@ -234,6 +243,9 @@
                         "type": "number"
                     },
                     "newly": {
+                        "type": "number"
+                    },
+                    "deleted": {
                         "type": "number"
                     }
                 }

@@ -74,7 +74,7 @@ class CustomerRepository implements CustomerInterface
     public function getCustomers(Request $request): JsonResponse
     {
         $search = $request->input('search', '');
-        $list = Customer::where('name', 'like', '%'.$search.'%')->orWhere('email', 'like', '%'.$search.'%')->get();
+        $list = Customer::where('first_name', 'like', '%'.$search.'%')->orWhere('last_name', 'like', '%'.$search.'%')->orWhere('email', 'like', '%'.$search.'%')->get();
 
         return response()->json(CustomerResource::collection($list));
     }

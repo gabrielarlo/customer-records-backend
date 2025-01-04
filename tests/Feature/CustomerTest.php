@@ -22,10 +22,12 @@ test('can list customers', function (): void {
     $response->assertJsonStructure([
         '*' => [
             'id',
-            'name',
+            'first_name',
+            'last_name',
             'email',
-            'phone',
+            'contact_number',
             'address',
+            'full_name',
             'created_at',
             'updated_at',
         ],
@@ -35,9 +37,10 @@ test('can list customers', function (): void {
 test('can create a customer', function (): void {
     // Make a POST request to the customers create endpoint
     $response = $this->postJson('/api/customers', [
-        'name' => 'John Doe',
+        'first_name' => 'John',
+        'last_name' => 'Doe',
         'email' => 'gBh6M@example.com',
-        'phone' => '1234567890',
+        'contact_number' => '09101234567',
         'address' => '123 Main St',
     ]);
 
@@ -47,10 +50,12 @@ test('can create a customer', function (): void {
     // Assert the response contains the customer data
     $response->assertJsonStructure([
         'id',
-        'name',
+        'first_name',
+        'last_name',
         'email',
-        'phone',
+        'contact_number',
         'address',
+        'full_name',
         'created_at',
         'updated_at',
     ]);
@@ -62,9 +67,10 @@ test('can update a customer', function (): void {
 
     // Make a PUT request to the customers update endpoint
     $response = $this->putJson("/api/customers/{$customer->id}", [
-        'name' => 'Jane Doe',
+        'first_name' => 'Jane',
+        'last_name' => 'Doe',
         'email' => '0Hm4o@example.com',
-        'phone' => '9876543210',
+        'contact_number' => '09101234568',
         'address' => '456 Elm St',
     ]);
 
@@ -74,10 +80,12 @@ test('can update a customer', function (): void {
     // Assert the response contains the updated customer data
     $response->assertJsonStructure([
         'id',
-        'name',
+        'first_name',
+        'last_name',
         'email',
-        'phone',
+        'contact_number',
         'address',
+        'full_name',
         'created_at',
         'updated_at',
     ]);
@@ -96,10 +104,12 @@ test('can show a customer', function (): void {
     // Assert the response contains the customer data
     $response->assertJsonStructure([
         'id',
-        'name',
+        'first_name',
+        'last_name',
         'email',
-        'phone',
+        'contact_number',
         'address',
+        'full_name',
         'created_at',
         'updated_at',
     ]);

@@ -13,13 +13,23 @@ class Customer extends Model
     use HasFactory, HasUuids, SoftDeletes;
 
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
-        'phone',
+        'contact_number',
         'address',
     ];
 
     protected $hidden = [
         'deleted_at',
     ];
+
+    protected $appends = [
+        'full_name',
+    ];
+
+    public function getFullNameAttribute(): string
+    {
+        return "{$this->first_name} {$this->last_name}";
+    }
 }

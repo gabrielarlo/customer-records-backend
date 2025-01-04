@@ -22,9 +22,10 @@ class UpdateCustomerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|min:3',
-            'email' => 'required|email|unique:customers,email,'.$this->customer->id,
-            'phone' => ['required', 'string', 'regex:/^09\d{9}$/'],
+            'first_name' => 'required|string|min:2',
+            'last_name' => 'required|string|min:2',
+            'email' => 'required|email|unique:customers,email',
+            'contact_number' => ['required', 'string', 'regex:/^09\d{9}$/'],
             'address' => 'required|string|min:10',
         ];
     }
@@ -37,7 +38,7 @@ class UpdateCustomerRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'phone.regex' => 'The phone number must be in the format 09#########.',
+            'contact_number.regex' => 'The contact number must be in the format 09#########.',
         ];
     }
 }
