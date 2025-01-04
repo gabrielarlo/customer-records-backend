@@ -16,4 +16,6 @@ interface CustomerInterface
     public function deleteCustomer(Customer $customer): JsonResponse;
 
     public function getCustomers(): JsonResponse;
+
+    public function getCounts(): JsonResponse;
 }

@@ -40,4 +40,9 @@ class CustomerController extends Controller
     {
         return $this->customerInterface->deleteCustomer($customer);
     }
+
+    public function getCounts()
+    {
+        return $this->customerInterface->getCounts();
+    }
 }

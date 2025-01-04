@@ -74,4 +74,12 @@ class CustomerRepository implements CustomerInterface
     {
         return response()->json(CustomerResource::collection(Customer::all()));
     }
+
+    public function getCounts(): JsonResponse
+    {
+        $total = Customer::count();
+        $newly = Customer::where('created_at', 'like', now()->format('Y-m-d ').'%')->count();
+
+        return response()->json(compact('total', 'newly'));
+    }
 }

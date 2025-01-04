@@ -150,6 +150,24 @@
                     }
                 }
             }
+        },
+        "/customers/counts": {
+            "get": {
+                "summary": "Get customers counts",
+                "responses": {
+                    "200": {
+                        "description": "Object of customer counts",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/CustomerCounts"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -197,6 +215,17 @@
                     }
                 },
                 "required": ["name", "email", "phone", "address"]
+            },
+            "CustomerCounts": {
+                "type": "object",
+                "properties": {
+                    "total": {
+                        "type": "number"
+                    },
+                    "newly": {
+                        "type": "number"
+                    }
+                }
             }
         }
     }
