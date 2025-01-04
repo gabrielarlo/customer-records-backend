@@ -4,6 +4,7 @@ namespace App\Interfaces;
 
 use App\Models\Customer;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 interface CustomerInterface
 {
@@ -15,7 +16,7 @@ interface CustomerInterface
 
     public function deleteCustomer(Customer $customer): JsonResponse;
 
-    public function getCustomers(): JsonResponse;
+    public function getCustomers(Request $request): JsonResponse;
 
     public function getCounts(): JsonResponse;
 }

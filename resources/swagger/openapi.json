@@ -10,6 +10,17 @@
             "get": {
                 "summary": "Get all customers",
                 "operationId": "getCustomers",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Search term to filter customers"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "A list of customers",

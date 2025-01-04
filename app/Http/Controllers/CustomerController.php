@@ -7,14 +7,15 @@ use App\Http\Requests\UpdateCustomerRequest;
 use App\Interfaces\CustomerInterface;
 use App\Models\Customer;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
     public function __construct(protected CustomerInterface $customerInterface) {}
 
-    public function list(): JsonResponse
+    public function list(Request $request): JsonResponse
     {
-        return $this->customerInterface->getCustomers();
+        return $this->customerInterface->getCustomers($request);
     }
 
     public function create(CreateCustomerRequest $request): JsonResponse

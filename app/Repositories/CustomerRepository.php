@@ -6,6 +6,7 @@ use App\Http\Resources\CustomerResource;
 use App\Interfaces\CustomerInterface;
 use App\Models\Customer;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class CustomerRepository implements CustomerInterface
 {
@@ -70,9 +71,12 @@ class CustomerRepository implements CustomerInterface
      *
      * @return JsonResponse The JSON response containing all customers data.
      */
-    public function getCustomers(): JsonResponse
+    public function getCustomers(Request $request): JsonResponse
     {
-        return response()->json(CustomerResource::collection(Customer::all()));
+        $search = $request->input('search', '');
+        $list = Customer::where('name', 'like', '%'.$search.'%')->orWhere('email', 'like', '%'.$search.'%')->get();
+
+        return response()->json(CustomerResource::collection($list));
     }
 
     public function getCounts(): JsonResponse
