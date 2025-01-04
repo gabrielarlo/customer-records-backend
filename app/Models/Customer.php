@@ -18,4 +18,8 @@ class Customer extends Model
         'phone',
         'address',
     ];
+
+    protected $hidden = [
+        'deleted_at',
+    ];
 }

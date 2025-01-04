@@ -62,7 +62,7 @@ class CustomerRepository implements CustomerInterface
     {
         $customer->delete();
 
-        return response()->json(['message' => 'Customer deleted successfully']);
+        return response()->json(['message' => 'Customer deleted successfully'], 204);
     }
 
     /**
