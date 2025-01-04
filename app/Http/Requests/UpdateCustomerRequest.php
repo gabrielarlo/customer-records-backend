@@ -24,7 +24,7 @@ class UpdateCustomerRequest extends FormRequest
         return [
             'first_name' => 'required|string|min:2',
             'last_name' => 'required|string|min:2',
-            'email' => 'required|email|unique:customers,email',
+            'email' => 'required|email|unique:customers,email,'.$this->customer->id,
             'contact_number' => ['required', 'string', 'regex:/^09\d{9}$/'],
             'address' => 'required|string|min:10',
         ];
